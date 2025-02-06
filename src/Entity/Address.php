@@ -21,6 +21,8 @@ class Address extends ObjectInformation
         mayHaveAsString as public getIp;
         mayHaveAsString as public getMetadata;
         mayHaveAsArray  as public getMessages;
+        mustHaveAsArray as public getValidationResults;
+        mustHaveAsBoolean as public getIsComplete;
     }
 
     public function getIsResidential()
@@ -31,5 +33,10 @@ class Address extends ObjectInformation
         }
 
         return (bool)$is_residential;
+    }
+
+    public function getIsValid(): bool
+    {
+        return $this->getValidationResults()['is_valid'];
     }
 }
